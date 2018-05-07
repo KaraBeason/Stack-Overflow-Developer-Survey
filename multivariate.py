@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plot
+
 
 def main():
     # df = pd.read_csv('data/2016 Stack Overflow Survey Responses.csv')
@@ -7,51 +9,53 @@ def main():
     # pd.to_pickle(df, 'data/SOpickle')
 
     df = pd.read_pickle('data/SOpickle')
-    print(list(df))
-    country = df['country']
-    age = df['age_midpoint']
-    gender = df['gender']
-    occupation = df['occupation']
-    experience = df['experience_midpoint']
-    salary = df['salary_midpoint']
-    aliens = df['aliens']
-    ability = df['programming_ability']
-    status = df['employment_status']
-    industry = df['industry']
-    companysize = df['company_size_range']
-    teamsize = df['team_size_range']
-    women = df['women_on_team']
-    remote = df['remote']
-    jobsatisfaction = df['job_satisfaction']
-    pet = df['dogs_vs_cats']
-    education = df['education']
-    star = df['star_wars_vs_star_trek']
-    atech = df['agree_tech']
-    anotice = df['agree_notice']
-    aproblem = df['agree_problemsolving']
-    adiversity = df['agree_diversity']
-    aadblocker = df['agree_adblocker']
-    aalcohol = df['agree_alcohol']
-    aboss = df['agree_loveboss']
-    anight = df['agree_nightcode']
-    alegacy = df['agree_legacy']
-    amars = df['agree_mars']
-    ivariety = df['important_variety']
-    icontrol = df['important_control']
-    isameend = df['important_sameend']
-    inewtech = df['important_newtech']
-    ibuildnew = df['important_buildnew']
-    ibuildexisting = df['important_buildexisting']
-    ipromotion = df['important_promotion']
-    imission = df['important_companymission']
-    iwfh = df['important_wfh']
-    ioffice = df['important_ownoffice']
-    challenges = df['developer_challenges']
-    whystack = df['why_stack_overflow']
-    interview = df['how_to_improve_interview_process']
-    jobsearch = df['job_search_annoyance']
-    newjob = df['open_to_new_job']
-    jobvalue = df['new_job_value']
+    # print(list(df))
+    country = np.array(df['country'].data)
+    soregion = np.array(df['so_region'].data)
+    age = np.array(df['age_midpoint'].data)
+    gender = np.array(df['gender'].data)
+    occupation = np.array(df['occupation'].data)
+    experience = np.array(df['experience_midpoint'].data)
+    salary = np.array(df['salary_midpoint'].data)
+    aliens = np.array(df['aliens'].data)
+    ability = np.array(df['programming_ability'].data)
+    status = np.array(df['employment_status'].data)
+    industry = np.array(df['industry'].data)
+    companysize = np.array(df['company_size_range'].data)
+    teamsize = np.array(df['team_size_range'].data)
+    women = np.array(df['women_on_team'].data)
+    remote = np.array(df['remote'].data)
+    jobsatisfaction = np.array(df['job_satisfaction'].data)
+    pet = np.array(df['dogs_vs_cats'].data)
+    education = np.array(df['education'].data)
+    star = np.array(df['star_wars_vs_star_trek'].data)
+    atech = np.array(df['agree_tech'].data)
+    anotice = np.array(df['agree_notice'].data)
+    aproblem = np.array(df['agree_problemsolving'].data)
+    adiversity = np.array(df['agree_diversity'].data)
+    aadblocker = np.array(df['agree_adblocker'].data)
+    aalcohol = np.array(df['agree_alcohol'].data)
+    aboss = np.array(df['agree_loveboss'].data)
+    anight = np.array(df['agree_nightcode'].data)
+    alegacy = np.array(df['agree_legacy'].data)
+    amars = np.array(df['agree_mars'].data)
+    ivariety = np.array(df['important_variety'].data)
+    icontrol = np.array(df['important_control'].data)
+    isameend = np.array(df['important_sameend'].data)
+    inewtech = np.array(df['important_newtech'].data)
+    ibuildnew = np.array(df['important_buildnew'].data)
+    ibuildexisting = np.array(df['important_buildexisting'].data)
+    ipromotion = np.array(df['important_promotion'].data)
+    imission = np.array(df['important_companymission'].data)
+    iwfh = np.array(df['important_wfh'].data)
+    ioffice = np.array(df['important_ownoffice'].data)
+    challenges = np.array(df['developer_challenges'].data)
+    whystack = np.array(df['why_stack_overflow'].data)
+    interview = np.array(df['how_to_improve_interview_process'].data)
+    jobsearch = np.array(df['job_search_annoyance'].data)
+    newjob = np.array(df['open_to_new_job'].data)
+    jobvalue = np.array(df['new_job_value'].data)
+
 
 if __name__ == '__main__':
     main()
