@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import random
-from matplotlib import colors as mcolors
 
 import math
 
@@ -192,32 +192,34 @@ def gender_salary():
     average_female_salary = list(range(8))
     average_male_experience = list(range(8))
     average_female_experience = list(range(8))
-    for i in range(0, 7, 1):
+    for i in range(0, 8, 1):
         average_female_experience[i] = female_experience_by_age[i] / female_count_age[i]
         average_female_salary[i] = female_salary_by_age[i] / female_count_age[i]
         average_male_experience[i] = male_experience_by_age[i] / male_count_age[i]
         average_male_salary[i] = male_salary_by_age[i] / male_count_age[i]
 
-    colors = {'Female Salary': 'hotpink', 'Female Exp': 'darkmagenta',
-              'Male Salary': 'mediumturquoise', 'Male Exp': 'teal'}
-
     ax = plt.subplot(111)
     ax2 = ax.twinx()
     x = [16, 22, 27, 32, 37, 44.5, 54.5, 65]
-    for i in range(0, 7, 1):
+    for i in range(0, 8, 1):
         ax.bar(x[i], average_female_salary[i], color = 'hotpink')
-        # x = np.asarray(x) + 1
-        # x_2 = list(map(lambda x: x * 2, x)
         ax.bar(x[i] + 1, average_male_salary[i], color = 'mediumturquoise')
-        # x = np.asarray(x) + 2
         ax2.bar(x[i] + 2, average_female_experience[i], color = 'darkmagenta')
-        # x = np.asarray(x) + 3
         ax2.bar(x[i] + 3, average_male_experience[i], color = 'teal')
-        # plot = plot(x="experience_midpoint", y="age_midpoint", s=no_nan_df.salary_midpoint/100, c=no_nan_df.gender.apply(lambda x: colors[x]),
-        #            kind='scatter', figsize = (7,7), title='Salary and Experience by Age')
-        # plt.set_xlabel("experience")
-        # plt.set_ylabel("age")
-    plt.show()
+    ax.set_xlabel("Age Midpoint")
+    ax.set_ylabel("Average Salary in USD")
+    ax2.set_ylabel("Average Experience")
+    handles = []
+    fem_sal = mpatches.Patch(color='hotpink', label='Female Salary')
+    handles.append(fem_sal)
+    male_sal = mpatches.Patch(color= 'mediumturquoise', label='Male Salary')
+    handles.append(male_sal)
+    fem_exp = mpatches.Patch(color='darkmagenta', label = 'Female Experience')
+    handles.append(fem_exp)
+    male_exp = mpatches.Patch(color='teal', label = 'Male Experience')
+    handles.append(male_exp)
+    plt.legend(handles= handles)
+    plt.savefig("Average Salary and Experience by Gender and Age Group")
 
 
 def main():
