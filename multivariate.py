@@ -2,16 +2,18 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
+from matplotlib import colors as mcolors
+
 import math
 
-# df = pd.read_csv('data/2016 Stack Overflow Survey Responses.csv')
+df = pd.read_csv('data/2016 Stack Overflow Survey Responses.csv')
 # print(df)
-# pd.to_pickle(df, 'data/SOpickle')
+pd.to_pickle(df, 'data/SOpickle')
 
 df = pd.read_pickle('data/SOpickle')
 # print(list(df))
 country = np.array(df['country'].data)
-soregion = np.array(df['so_region'].data)
+soregion = np.array(df['so_region'].data)  #stack overflow region
 age = np.array(df['age_midpoint'].data)
 gender = np.array(df['gender'].data)
 occupation = np.array(df['occupation'].data)
@@ -24,7 +26,7 @@ industry = np.array(df['industry'].data)
 companysize = np.array(df['company_size_range'].data)
 teamsize = np.array(df['team_size_range'].data)
 women = np.array(df['women_on_team'].data)
-remote = np.array(df['remote'].data)
+remote = np.array(df['remote'].data) #how often do you work remotely
 jobsatisfaction = np.array(df['job_satisfaction'].data)
 pet = np.array(df['dogs_vs_cats'].data)
 education = np.array(df['education'].data)
@@ -127,7 +129,7 @@ def agree():
     plt.text(-1, 0.27, s='Disagree S', va='top', ha='center')
     plt.text(-1, 0.52, s='N', va='top', ha='center')
     plt.text(-1, 0.73, s='Agree S', va='top', ha='center')
-    plt.text(-1, 1, s='Aagree C', va='top', ha='center')
+    plt.text(-1, 1, s='Agree C', va='top', ha='center')
     plt.text(0, 0, s='tech', va='top', ha='center')
     plt.text(1, 0, s='notice', va='top', ha='center')
     plt.text(2, 0, s='problem', va='top', ha='center')
@@ -144,9 +146,74 @@ def agree():
 
     plt.show()
 
+def gender_salary():
+    salaryset = set(salary)
+    salaryset = sorted([x for x in salaryset if x == x])
+    # print(salaryset)
+    # df["gender"] =
+    no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint'])
+    no_nan_df = no_nan_df[no_nan_df.gender != 'Prefer not to disclose']
+    no_nan_df = no_nan_df[no_nan_df.gender != 'Other']
+    female_salary_by_age = list(range(8))
+    female_count_age = list(range(8))
+    male_salary_by_age = list(range(8))
+    male_count_age = list(range(8))
+    male_experience_by_age = list(range(8))
+    female_experience_by_age = list(range(8))
+    # iterate through data and keep track of age, gender, counts to get average salary and average experience
+    #   by age group and gender
+    for index, rows in no_nan_df.iterrows():
+        if rows['age_midpoint'] == 16:
+            insert_i = 0
+        if rows['age_midpoint'] == 22:
+            insert_i = 1
+        if rows['age_midpoint'] == 27:
+            insert_i = 2
+        if rows['age_midpoint'] == 32:
+            insert_i = 3
+        if rows['age_midpoint'] == 37:
+            insert_i = 4
+        if rows['age_midpoint'] == 44.5:
+            insert_i = 5
+        if rows['age_midpoint'] == 54.5:
+            insert_i = 6
+        if rows['age_midpoint'] == 65:
+            insert_i = 7
+        if rows['gender'] == 'Female':
+            female_count_age[insert_i] +=1
+            female_salary_by_age[insert_i] += rows['salary_midpoint']
+            female_experience_by_age[insert_i] += rows['experience_midpoint']
+        elif rows['gender'] == 'Male':
+            male_count_age[insert_i] += 1
+            male_salary_by_age[insert_i] += rows['salary_midpoint']
+            male_experience_by_age[insert_i] += rows['experience_midpoint']
+
+    average_male_salary = list(range(8))
+    average_female_salary = list(range(8))
+    average_male_experience = list(range(8))
+    average_female_experience = list(range(8))
+    for i in range(0, 7, 1):
+        average_female_experience[i] = female_experience_by_age[i] / female_count_age[i]
+        average_female_salary[i] = female_salary_by_age[i] / female_count_age[i]
+        average_male_experience[i] = male_experience_by_age[i] / male_count_age[i]
+        average_male_salary[i] = male_salary_by_age[i] / male_count_age[i]
+
+    colors = {'Female Salary': 'hotpink', 'Female Exp': 'darkmagenta',
+              'Male Salary': 'mediumturquoise', 'Male Exp': 'teal'}
+
+    ax = plt.subplot(111)
+    x = [16, 22, 27, 32, 37, 44.5, 54.5, 65]
+    ax.bar(x, average_female_salary, color = 'hotpink')
+    # plot = plot(x="experience_midpoint", y="age_midpoint", s=no_nan_df.salary_midpoint/100, c=no_nan_df.gender.apply(lambda x: colors[x]),
+    #            kind='scatter', figsize = (7,7), title='Salary and Experience by Age')
+    # plt.set_xlabel("experience")
+    # plt.set_ylabel("age")
+    plt.show()
+
 
 def main():
-    agree()
+    # agree()
+    gender_salary();
     # regionset = set(soregion)
     # regionset = sorted([x for x in regionset if x == x])
     # print(regionset)
