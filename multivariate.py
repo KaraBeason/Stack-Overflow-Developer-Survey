@@ -151,7 +151,7 @@ def gender_salary():
     salaryset = sorted([x for x in salaryset if x == x])
     # print(salaryset)
     # df["gender"] =
-    no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint'])
+    no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint', 'experience_midpoint'])
     no_nan_df = no_nan_df[no_nan_df.gender != 'Prefer not to disclose']
     no_nan_df = no_nan_df[no_nan_df.gender != 'Other']
     female_salary_by_age = list(range(8))
@@ -202,12 +202,21 @@ def gender_salary():
               'Male Salary': 'mediumturquoise', 'Male Exp': 'teal'}
 
     ax = plt.subplot(111)
+    ax2 = ax.twinx()
     x = [16, 22, 27, 32, 37, 44.5, 54.5, 65]
-    ax.bar(x, average_female_salary, color = 'hotpink')
-    # plot = plot(x="experience_midpoint", y="age_midpoint", s=no_nan_df.salary_midpoint/100, c=no_nan_df.gender.apply(lambda x: colors[x]),
-    #            kind='scatter', figsize = (7,7), title='Salary and Experience by Age')
-    # plt.set_xlabel("experience")
-    # plt.set_ylabel("age")
+    for i in range(0, 7, 1):
+        ax.bar(x[i], average_female_salary[i], color = 'hotpink')
+        # x = np.asarray(x) + 1
+        # x_2 = list(map(lambda x: x * 2, x)
+        ax.bar(x[i] + 1, average_male_salary[i], color = 'mediumturquoise')
+        # x = np.asarray(x) + 2
+        ax2.bar(x[i] + 2, average_female_experience[i], color = 'darkmagenta')
+        # x = np.asarray(x) + 3
+        ax2.bar(x[i] + 3, average_male_experience[i], color = 'teal')
+        # plot = plot(x="experience_midpoint", y="age_midpoint", s=no_nan_df.salary_midpoint/100, c=no_nan_df.gender.apply(lambda x: colors[x]),
+        #            kind='scatter', figsize = (7,7), title='Salary and Experience by Age')
+        # plt.set_xlabel("experience")
+        # plt.set_ylabel("age")
     plt.show()
 
 
