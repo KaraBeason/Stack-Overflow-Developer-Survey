@@ -147,8 +147,8 @@ def agree():
     plt.show()
 
 def gender_salary():
-    salaryset = set(salary)
-    salaryset = sorted([x for x in salaryset if x == x])
+    ageset = set(age)
+    ageset = sorted([x for x in ageset if x == x])
     # print(salaryset)
     # df["gender"] =
     no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint', 'experience_midpoint'])
@@ -202,10 +202,10 @@ def gender_salary():
     ax2 = ax.twinx()
     x = [16, 22, 27, 32, 37, 44.5, 54.5, 65]
     for i in range(0, 8, 1):
-        ax.bar(x[i], average_female_salary[i], color = 'hotpink')
-        ax.bar(x[i] + 1, average_male_salary[i], color = 'mediumturquoise')
-        ax2.bar(x[i] + 2, average_female_experience[i], color = 'darkmagenta')
-        ax2.bar(x[i] + 3, average_male_experience[i], color = 'teal')
+        ax.bar(x[i] - 1.5, average_female_salary[i], color = 'hotpink')
+        ax.bar(x[i] - .5, average_male_salary[i], color = 'mediumturquoise')
+        ax2.bar(x[i] + .5, average_female_experience[i], color = 'darkmagenta')
+        ax2.bar(x[i] + 1.5, average_male_experience[i], color = 'teal')
     ax.set_xlabel("Age Midpoint")
     ax.set_ylabel("Average Salary in USD")
     ax2.set_ylabel("Average Experience")
@@ -219,6 +219,8 @@ def gender_salary():
     male_exp = mpatches.Patch(color='teal', label = 'Male Experience')
     handles.append(male_exp)
     plt.legend(handles= handles)
+    plt.xticks(ageset)
+    plt.tight_layout()
     plt.savefig("Average Salary and Experience by Gender and Age Group")
 
 
