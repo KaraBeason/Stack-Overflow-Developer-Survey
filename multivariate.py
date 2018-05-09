@@ -1,17 +1,19 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import random
+
 import math
 
-# df = pd.read_csv('data/2016 Stack Overflow Survey Responses.csv')
+df = pd.read_csv('data/2016 Stack Overflow Survey Responses.csv')
 # print(df)
-# pd.to_pickle(df, 'data/SOpickle')
+pd.to_pickle(df, 'data/SOpickle')
 
 df = pd.read_pickle('data/SOpickle')
 # print(list(df))
 country = np.array(df['country'].data)
-soregion = np.array(df['so_region'].data)
+soregion = np.array(df['so_region'].data)  #stack overflow region
 age = np.array(df['age_midpoint'].data)
 gender = np.array(df['gender'].data)
 occupation = np.array(df['occupation'].data)
@@ -24,7 +26,7 @@ industry = np.array(df['industry'].data)
 companysize = np.array(df['company_size_range'].data)
 teamsize = np.array(df['team_size_range'].data)
 women = np.array(df['women_on_team'].data)
-remote = np.array(df['remote'].data)
+remote = np.array(df['remote'].data) #how often do you work remotely
 jobsatisfaction = np.array(df['job_satisfaction'].data)
 pet = np.array(df['dogs_vs_cats'].data)
 education = np.array(df['education'].data)
@@ -229,7 +231,6 @@ def agree():
     plt.text(-1, 0.50, s='Neutral', va='top', ha='center')
     plt.text(-1, 0.76, s='Agree S', va='top', ha='center')
     plt.text(-1, 1, s='Agree C', va='top', ha='center')
-
     plt.text(0, 0, s='work tech', va='top', ha='center')
     plt.text(1, 1, s='notice improvements', va='bottom', ha='center')
     plt.text(2, 0, s='problem solving', va='top', ha='center')
@@ -260,6 +261,83 @@ def agree():
     plt.savefig('imgs/AoD_avgs.png')
     plt.show()
     plt.clf()
+
+def gender_salary():
+    ageset = set(age)
+    ageset = sorted([x for x in ageset if x == x])
+    # print(salaryset)
+    # df["gender"] =
+    no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint', 'experience_midpoint'])
+    no_nan_df = no_nan_df[no_nan_df.gender != 'Prefer not to disclose']
+    no_nan_df = no_nan_df[no_nan_df.gender != 'Other']
+    female_salary_by_age = list(range(8))
+    female_count_age = list(range(8))
+    male_salary_by_age = list(range(8))
+    male_count_age = list(range(8))
+    male_experience_by_age = list(range(8))
+    female_experience_by_age = list(range(8))
+    # iterate through data and keep track of age, gender, counts to get average salary and average experience
+    #   by age group and gender
+    for index, rows in no_nan_df.iterrows():
+        if rows['age_midpoint'] == 16:
+            insert_i = 0
+        if rows['age_midpoint'] == 22:
+            insert_i = 1
+        if rows['age_midpoint'] == 27:
+            insert_i = 2
+        if rows['age_midpoint'] == 32:
+            insert_i = 3
+        if rows['age_midpoint'] == 37:
+            insert_i = 4
+        if rows['age_midpoint'] == 44.5:
+            insert_i = 5
+        if rows['age_midpoint'] == 54.5:
+            insert_i = 6
+        if rows['age_midpoint'] == 65:
+            insert_i = 7
+        if rows['gender'] == 'Female':
+            female_count_age[insert_i] +=1
+            female_salary_by_age[insert_i] += rows['salary_midpoint']
+            female_experience_by_age[insert_i] += rows['experience_midpoint']
+        elif rows['gender'] == 'Male':
+            male_count_age[insert_i] += 1
+            male_salary_by_age[insert_i] += rows['salary_midpoint']
+            male_experience_by_age[insert_i] += rows['experience_midpoint']
+
+    average_male_salary = list(range(8))
+    average_female_salary = list(range(8))
+    average_male_experience = list(range(8))
+    average_female_experience = list(range(8))
+    for i in range(0, 8, 1):
+        average_female_experience[i] = female_experience_by_age[i] / female_count_age[i]
+        average_female_salary[i] = female_salary_by_age[i] / female_count_age[i]
+        average_male_experience[i] = male_experience_by_age[i] / male_count_age[i]
+        average_male_salary[i] = male_salary_by_age[i] / male_count_age[i]
+
+    ax = plt.subplot(111)
+    ax2 = ax.twinx()
+    x = [16, 22, 27, 32, 37, 44.5, 54.5, 65]
+    for i in range(0, 8, 1):
+        ax.bar(x[i] - 1.5, average_female_salary[i], color = 'hotpink')
+        ax.bar(x[i] - .5, average_male_salary[i], color = 'mediumturquoise')
+        ax2.bar(x[i] + .5, average_female_experience[i], color = 'darkmagenta')
+        ax2.bar(x[i] + 1.5, average_male_experience[i], color = 'teal')
+    ax.set_xlabel("Age Midpoint")
+    ax.set_ylabel("Average Salary in USD")
+    ax2.set_ylabel("Average Experience")
+    handles = []
+    fem_sal = mpatches.Patch(color='hotpink', label='Female Salary')
+    handles.append(fem_sal)
+    male_sal = mpatches.Patch(color= 'mediumturquoise', label='Male Salary')
+    handles.append(male_sal)
+    fem_exp = mpatches.Patch(color='darkmagenta', label = 'Female Experience')
+    handles.append(fem_exp)
+    male_exp = mpatches.Patch(color='teal', label = 'Male Experience')
+    handles.append(male_exp)
+    plt.legend(handles= handles)
+    plt.xticks(ageset)
+    plt.tight_layout()
+    plt.savefig("Average Salary and Experience by Gender and Age Group")
 
 
 def important():
