@@ -206,7 +206,7 @@ def gender_salary():
     ax5.bar(x - .4, list(avg_female_salary_industry.values()), align='center', color='deeppink')
     ax6.bar(x + .5, list(male_industry_by_age.values()), align='center', color='c')
     ax5.bar(x + 1.26, list(avg_male_salary_industry.values()), align='center', color='darkcyan')
-    # plt.tight_layout()
+    plt.tight_layout()
     handles = []
     fem_ind = mpatches.Patch(color='violet', label='Fem Industry')
     handles.append(fem_ind)
@@ -216,7 +216,8 @@ def gender_salary():
     handles.append(fem_exp)
     male_exp = mpatches.Patch(color='darkcyan', label='Male Salary')
     handles.append(male_exp)
-    plt.legend(handles=handles)
+    plt.legend(handles=handles, loc=(-.1, -.75))
+
     # plt.show()
 
     plt.savefig("Average Salary by Industry Excluding Software Products.png")
