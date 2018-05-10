@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a58c570f-b10b-4bdf-a782-1e277435f9f8" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/kara_multivariate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Average Salary and Experience by Gender and Age Group.png" beforeDir="false" afterPath="$PROJECT_DIR$/Average Salary and Experience by Gender and Age Group.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multivariate.py" beforeDir="false" afterPath="$PROJECT_DIR$/multivariate.py" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/venv/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,27 +15,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="multivariate.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="multivariate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/multivariate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="418" column="19" selection-start-line="418" selection-start-column="19" selection-end-line="418" selection-end-column="19" />
+            <state relative-caret-position="136">
+              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-end-line="15" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#3269#11712#0" />
+                <element signature="e#2888#3158#0" />
+                <element signature="e#3178#11622#0" />
+                <element signature="e#11646#20019#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Average Salary and Participation by Industry.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Average Salary and Participation by Industry.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="Salary and Industry by Gender.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Salary and Industry by Gender.png">
-          <provider selected="true" editor-type-id="images" />
+      <file leaf-file-name="kara_multivariate.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kara_multivariate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -47,6 +52,7 @@
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/multivariate.py" />
+        <option value="$PROJECT_DIR$/kara_multivariate.py" />
       </list>
     </option>
   </component>
@@ -90,7 +96,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.kara_multivariate">
+    <configuration name="kara_multivariate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="stackoverflow" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kara_multivariate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="multivariate" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="stackoverflow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -109,8 +133,13 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <list>
+      <item itemvalue="Python.multivariate" />
+      <item itemvalue="Python.kara_multivariate" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.kara_multivariate" />
         <item itemvalue="Python.multivariate" />
       </list>
     </recent_temporary>
@@ -122,26 +151,24 @@
     <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15023847" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1772655" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3468697" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2994924" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.016920473" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1772655" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2994924" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.016920473" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -151,11 +178,26 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/multivariate.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7106">
+          <caret line="418" column="19" selection-start-line="418" selection-start-column="19" selection-end-line="418" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/multivariate.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3808">
           <caret line="224" selection-start-line="224" selection-end-line="224" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -173,7 +215,9 @@
           <caret line="148" column="15" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -198,7 +242,9 @@
           <caret line="157" column="100" selection-start-line="157" selection-start-column="100" selection-end-line="157" selection-end-column="100" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -244,7 +290,9 @@
           <caret line="198" column="25" lean-forward="true" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -255,7 +303,9 @@
           <caret line="148" column="15" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -280,7 +330,9 @@
           <caret line="157" column="100" selection-start-line="157" selection-start-column="100" selection-end-line="157" selection-end-column="100" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
           </folding>
         </state>
       </provider>
@@ -320,9 +372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Ideas">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -330,37 +379,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Average Salary and Experience by Gender and Age Group.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AoD_avgs.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IWestern Europe.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ISouth Asia.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ISouth America.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IOceania.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Salary and Industry by Gender.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Average Salary and Participation by Industry.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/multivariate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="418" column="19" selection-start-line="418" selection-start-column="19" selection-end-line="418" selection-end-column="19" />
+        <state relative-caret-position="136">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-end-line="15" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3269#11712#0" />
+            <element signature="e#2888#3158#0" />
+            <element signature="e#3178#11622#0" />
+            <element signature="e#11646#20019#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kara_multivariate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
