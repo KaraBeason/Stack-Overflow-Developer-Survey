@@ -46,8 +46,7 @@ df = pd.read_pickle('data/SOpickle')
 def gender_salary():
     ageset = set(age)
     ageset = sorted([x for x in ageset if x == x])
-    # print(salaryset)
-    # df["gender"] =
+
     no_nan_df = df.dropna(subset=['gender', 'salary_midpoint', 'age_midpoint', 'experience_midpoint', 'industry'])
     no_nan_df = no_nan_df[no_nan_df.gender != 'Prefer not to disclose']
     no_nan_df = no_nan_df[no_nan_df.gender != 'Other']
@@ -63,6 +62,13 @@ def gender_salary():
     male_industry_by_age = dict.fromkeys(set(industries_set), 0)
     female_industry_salary = dict.fromkeys(set(industries_set), 0)
     male_industry_salary = dict.fromkeys(set(industries_set), 0)
+
+    # dictionaries excluding "software products" industry that skews data set
+    male_ind_exclude_gen = dict.fromkeys((set(industries_set)), 0)
+    del male_ind_exclude_gen['Software Products']
+    female_ind_exclude_gen = dict.fromkeys((set(industries_set)), 0)
+    del female_ind_exclude_gen['Software Products']
+
     # iterate through data and keep track of age, gender, counts to get average salary and average experience
     #   by age group and gender
     for index, rows in no_nan_df.iterrows():
@@ -88,13 +94,16 @@ def gender_salary():
             female_experience_by_age[insert_i] += rows['experience_midpoint']
             female_industry_by_age[rows['industry']] += 1
             female_industry_salary[rows['industry']] += rows['salary_midpoint']
+            # if rows['industry'] is not 'Software Products':
+            #     female_ind_exclude_gen[rows['industry']] += 1
         elif rows['gender'] == 'Male':
             male_count_age[insert_i] += 1
             male_salary_by_age[insert_i] += rows['salary_midpoint']
             male_experience_by_age[insert_i] += rows['experience_midpoint']
             male_industry_by_age[rows['industry']] += 1
             male_industry_salary[rows['industry']] += rows['salary_midpoint']
-
+            # if rows['industry'] is not 'Software Products':
+            #     female_ind_exclude_gen[rows['industry']] += 1
     average_male_salary = list(range(8))
     average_female_salary = list(range(8))
     average_male_experience = list(range(8))
@@ -131,6 +140,7 @@ def gender_salary():
     plt.tight_layout()
     plt.savefig("Average Salary and Experience by Gender and Age Group.png")
 
+    # get average salary by industry
     avg_female_salary_industry = dict(
         (k, float(female_industry_salary[k]) / female_industry_by_age[k]) for k in female_industry_salary)
     avg_male_salary_industry = dict(
@@ -167,9 +177,49 @@ def gender_salary():
     plt.legend(handles=handles)
     plt.tight_layout()
     # plt.axis('equal')
-    plt.show()
+    # plt.show()
+    plt.savefig("Average Salary by Industry and Gender.png")
 
-    # plt.savefig("Average Salary and Participation by Industry.png")
+    # **** the reported participation by males in "Software Products"
+    # skews the data.  Adding a viz that excludes this "catchall" term.
+
+    del avg_female_salary_industry['Software Products']
+    del avg_male_salary_industry['Software Products']
+    del female_industry_by_age['Software Products']
+    del male_industry_by_age['Software Products']
+
+
+    fig3 = plt.figure(2)
+    ax5 = plt.subplot(111)
+    ax6 = ax5.twinx()
+    # print(female_industry_by_age.values())
+    # x = np.arange(0, len(female_industry_by_age), 1)
+    # x = np.multiply(x, 5)
+    ax5.set_xlabel("Industry")
+    ax5.set_ylabel("Average Salary in USD")
+    ax6.set_ylabel("Number of Participants")
+    x = np.arange(0, len(female_ind_exclude_gen), 1)
+    x = np.multiply(x, 5)
+    ax5.set_xticks(x)
+    ax5.set_xticklabels(list(female_ind_exclude_gen.keys()), rotation='vertical')
+    ax6.bar(x - 1.25, list(female_industry_by_age.values()), align='center', color= 'violet')
+    ax5.bar(x - .4, list(avg_female_salary_industry.values()), align='center', color='deeppink')
+    ax6.bar(x + .5, list(male_industry_by_age.values()), align='center', color='c')
+    ax5.bar(x + 1.26, list(avg_male_salary_industry.values()), align='center', color='darkcyan')
+    # plt.tight_layout()
+    handles = []
+    fem_ind = mpatches.Patch(color='violet', label='Fem Industry')
+    handles.append(fem_ind)
+    male_ind = mpatches.Patch(color='c', label='Male Industry')
+    handles.append(male_ind)
+    fem_exp = mpatches.Patch(color='deeppink', label='Female Salary')
+    handles.append(fem_exp)
+    male_exp = mpatches.Patch(color='darkcyan', label='Male Salary')
+    handles.append(male_exp)
+    plt.legend(handles=handles)
+    # plt.show()
+
+    plt.savefig("Average Salary by Industry Excluding Software Products.png")
 
 
 def main():
